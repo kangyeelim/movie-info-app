@@ -70,7 +70,6 @@ class PopularMoviesScreen extends React.Component {
         renderItem={item => this.movieResult(item)}
         keyExtractor={item => item.key + item.title}/>)}
       </View>
-
       </View>
     )}
 }

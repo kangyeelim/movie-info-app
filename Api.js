@@ -1,4 +1,5 @@
 const api_key = //insert your TMDB API KEY
+const api_key_omdb = //insert your OMDB API KEY
 
 const processMovie = (movie) => ({
     key: String(movie.id),
@@ -25,6 +26,18 @@ export const fetchMoreMovieDetails = async (movie_id) => {
   const runtime = await result.runtime;
   const languages = await result.spoken_languages;
   const status = await result.status;
+  const imdb_id = await result.imdb_id;
+  const response2 = await fetch('http://www.omdbapi.com/?i='+ imdb_id +'&apikey=' + api_key_omdb);
+  const result2 = await response2.json();
+  const rated = await result2.Rated;
+  const ratings = await result2.Ratings;
+  const actors = await result2.Actors;
+  const director = await result2.Director;
+  const writer = await result2.Writer;
+  const response3 = await fetch('https://api.themoviedb.org/3/movie/' + movie_id + '/recommendations?api_key='+ api_key + '&language=en-US&page=1');
+  const result3 = await response3.json();
+  const results3 = await result3.results;
+  const recommendations = results3.map(processMovie);
   var languagesText = '';
   for (var i = 0; i < languages.length; i++) {
     if (i > 0) {
@@ -47,13 +60,22 @@ export const fetchMoreMovieDetails = async (movie_id) => {
     if (i > 0) {
       companies += ", ";
     }
-    companies += productionCompanies[i].name + " (" + productionCompanies[i].origin_country + ")";
+    companies += productionCompanies[i].name;
+    if (productionCompanies[i].origin_country != "") {
+      companies += " (" + productionCompanies[i].origin_country + ")";
+    }
   }
   return ({
     runtime: runtime,
     languages: languagesText,
     genres: genresText,
     status: status,
+    ratings: ratings,
+    rated: rated,
+    actors: actors,
+    director: director,
+    writer: writer,
+    recommendations: recommendations,
     productionCompanies: companies
   });
 }
