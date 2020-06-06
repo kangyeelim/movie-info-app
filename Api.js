@@ -1,4 +1,4 @@
-const api_key = //insert your TMDB API KEY;
+const api_key = //insert your TMDB API KEY
 
 const processMovie = (movie) => ({
     key: String(movie.id),
@@ -56,4 +56,15 @@ export const fetchMoreMovieDetails = async (movie_id) => {
     status: status,
     productionCompanies: companies
   });
+}
+
+export const fetchPopularMovies = async () => {
+  const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key='+ api_key +'&language=en-US&page=1');
+  const result  = await response.json();
+  const results = await result.results;
+  const response2 = await fetch('https://api.themoviedb.org/3/movie/popular?api_key='+ api_key +'&language=en-US&page=2');
+  const result2  = await response2.json();
+  const results2 = await result2.results;
+  return (results.map(processMovie)).concat(results2.map(processMovie));
+
 }

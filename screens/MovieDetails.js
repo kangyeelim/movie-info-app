@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, Image, Dimensions, ScrollView, FlatList } from 
 import { fetchMoreMovieDetails } from '../Api.js'
 
 var { height, width } = Dimensions.get('window');
-var posterWidth = 0.8 * width;
 
 class MovieDetailsScreen extends React.Component {
   static navigationOptions = ({navigation}) => ({

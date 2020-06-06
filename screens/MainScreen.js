@@ -117,8 +117,10 @@ const styles = StyleSheet.create({
     paddingLeft: 2
   },
   flatlist: {
-    margin:20,
-    paddingTop: 20,
+    marginLeft:20,
+    marginRight:20,
+    marginTop: 10,
+    paddingTop: 10,
     marginBottom: 20
   },
   touchable: {
@@ -128,6 +130,7 @@ const styles = StyleSheet.create({
     shadowRadius: 1, //IOS
     backgroundColor: '#fff',
     elevation: 2, // Android
+    marginBottom:10
   }
 });
 
