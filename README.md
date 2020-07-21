@@ -2,6 +2,8 @@
 A simple mobile application to search for movie information, popular movies (coming soon) and 
 recommended movies (coming soon) built using React Native.
 
+#### https://courses.edx.org/courses/course-v1:HarvardX+CS50M+Mobile/course/
+
 ## How to use it
 
 * Simply search for a movie

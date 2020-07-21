@@ -1,5 +1,5 @@
-const api_key = //insert your TMDB API KEY
-const api_key_omdb = //insert your OMDB API KEY
+const api_key = 'd343c3058e57fa902c84c71393c8dbbd';
+const api_key_omdb = '4232bcb1';
 
 const processMovie = (movie) => ({
     key: String(movie.id),
